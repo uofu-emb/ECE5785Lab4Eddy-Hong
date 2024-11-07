@@ -16,7 +16,7 @@ void signal_handle_calculation(SemaphoreHandle_t request, SemaphoreHandle_t resp
     if (xSemaphoreTake(request, portMAX_DELAY) == pdTRUE) {
       
         data->output = data->input + 5;
-    
+        vTaskDelay(10);
         // Signal that the calculation is done by giving the response semaphore
         xSemaphoreGive(response);
     }

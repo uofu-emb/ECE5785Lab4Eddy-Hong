@@ -8,10 +8,9 @@
 
 void fifo_worker_handler(QueueHandle_t requests, QueueHandle_t results, int id)
 {
-    struct request_msg data; 
+   struct request_msg data; 
    xQueueReceive(requests, &data, portMAX_DELAY);
    data.output = data.input +5;
    data.handled_by = id;
-   vTaskDelay(10);
-    xQueueSendToBack(results, &data, portMAX_DELAY);
+   xQueueSendToBack(results, &data, portMAX_DELAY);
 }
