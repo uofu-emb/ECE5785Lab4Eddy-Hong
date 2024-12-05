@@ -27,7 +27,7 @@ void signal_handle_calculation(SemaphoreHandle_t request, SemaphoreHandle_t resp
 BaseType_t signal_request_calculate(SemaphoreHandle_t request, SemaphoreHandle_t response, struct signal_data *data)
 {
      
- // Send the request by giving the request semaphore
+ // Send the request by giving the request semaphore to adquire the semaphore
     if (xSemaphoreGive(request) == pdTRUE) {
         // Wait for the response semaphore, signaling completion of the worker task
         if (xSemaphoreTake(response, portMAX_DELAY) == pdTRUE) {
